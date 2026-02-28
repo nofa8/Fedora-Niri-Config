@@ -12,16 +12,13 @@ echo -e "${CYAN}Installing high-performance terminal utilities...${RESET}"
 CLI_PACKAGES=(
     "fzf"           # Fuzzy finder
     "ripgrep"       # Faster grep (rg)
-    "eza"           # Better ls — icons, git integration, tree view
     "bat"           # Better cat — syntax highlighting, line numbers
     "zoxide"        # Smarter cd — learns your most-used directories
     "fd-find"       # Faster find — simpler syntax, respects .gitignore
     "tealdeer"      # Fast tldr pages (concise man replacements)
     "jq"            # CLI JSON processor
     "btop"          # Beautiful resource monitor
-    "lazygit"       # Terminal Git UI
     "stow"          # Dotfile symlink manager
-    "xh"            # Fast, friendly HTTP client (curl alternative)
     "git-delta"     # Beautiful git diff viewer — syntax highlighting, side-by-side
     "dust"          # Modern disk usage analyzer (du replacement)
 )

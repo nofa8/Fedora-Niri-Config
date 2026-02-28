@@ -57,8 +57,11 @@ fi
 # ============================================================
 section "Configuring .zshrc"
 
-# Backup existing .zshrc if it exists and wasn't already backed up
-if [ -f "$HOME/.zshrc" ] && [ ! -f "$HOME/.zshrc.backup" ]; then
+# Ensure .zshrc exists (OhMyZsh creates one, but guard against edge cases)
+touch "$HOME/.zshrc"
+
+# Backup existing .zshrc if it hasn't been backed up already
+if [ ! -f "$HOME/.zshrc.backup" ]; then
     run_step "Backup existing .zshrc" "cp $HOME/.zshrc $HOME/.zshrc.backup"
 fi
 
@@ -71,7 +74,7 @@ if ! grep -qF "$MARKER" "$HOME/.zshrc" 2>/dev/null; then
 # --- Niri+DMS Tool Inits ---
 
 # Path
-export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.local/share/fnm:$PATH"
 
 # FNM (Node.js version manager)
 eval "$(fnm env --use-on-cd)"
@@ -86,7 +89,6 @@ eval "$(starship init zsh)"
 eval "$(uv generate-shell-completion zsh)"
 
 # Aliases
-alias ls='eza --icons'
 alias cat='bat'
 alias docker='podman'
 alias k='kubectl'
